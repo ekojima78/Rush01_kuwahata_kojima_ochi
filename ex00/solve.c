@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuwahat <tkuwahat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ekojima <ekojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:23:25 by tkuwahat          #+#    #+#             */
-/*   Updated: 2025/03/23 15:05:53 by tkuwahat         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:06:56 by ekojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	is_valid(int grid[4][4], int row, int col, int num);
+int	check_constraints(int grid[4][4], int constraints[16]);
 
 int	solve(int grid[4][4], int constraints[16], int row, int col)
 {
@@ -19,7 +20,7 @@ int	solve(int grid[4][4], int constraints[16], int row, int col)
 	int	num;
 
 	if (row == 4)
-		return (1); // すべての行を埋め終えたら成功
+		return (check_constraints(grid, constraints));
 	next_row = (col == 3) ? row + 1 : row;
 	next_col = (col + 1) % 4;
 	num = 1;
@@ -30,7 +31,7 @@ int	solve(int grid[4][4], int constraints[16], int row, int col)
 			grid[row][col] = num;
 			if (solve(grid, constraints, next_row, next_col))
 				return (1);
-			grid[row][col] = 0; // バックトラック
+			grid[row][col] = 0;
 		}
 		num++;
 	}
