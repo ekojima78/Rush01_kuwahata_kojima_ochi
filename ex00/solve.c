@@ -6,12 +6,18 @@
 /*   By: tkuwahat <tkuwahat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:23:25 by tkuwahat          #+#    #+#             */
-/*   Updated: 2025/03/23 17:04:39 by tkuwahat         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:31:10 by tkuwahat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_valid(int grid[4][4], int row, int col, int num);
-int	check_constraints(int grid[4][4], int constraints[16]);
+int		is_valid(int grid[4][4], int row, int col, int num);
+int		check_constraints(int grid[4][4], int constraints[16]);
+
+void	get_next_position(int row, int col, int *next_row, int *next_col)
+{
+	*next_row = row + (col == 3);
+	*next_col = (col + 1) % 4;
+}
 
 int	solve(int grid[4][4], int constraints[16], int row, int col)
 {
