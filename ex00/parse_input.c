@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuwahat <tkuwahat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ekojima <ekojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:21:58 by tkuwahat          #+#    #+#             */
-/*   Updated: 2025/03/23 14:56:23 by tkuwahat         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:01:50 by ekojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	parse_input(char *str, int constraints[16])
+void	parse_input(char *str, int *constraints)
 {
 	int	i;
 	int	j;

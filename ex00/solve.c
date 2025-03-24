@@ -3,38 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuwahat <tkuwahat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ekojima <ekojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:23:25 by tkuwahat          #+#    #+#             */
-/*   Updated: 2025/03/23 17:04:39 by tkuwahat         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:11:02 by ekojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_valid(int grid[4][4], int row, int col, int num);
-int	check_constraints(int grid[4][4], int constraints[16]);
+int	is_valid(int *grid, int row, int col, int num);
+int	check_constraints(int *grid, int *constraints);
 
-int	solve(int grid[4][4], int constraints[16], int row, int col)
+int	solve(int *grid, int *constraints, int row, int col)
 {
-	int	next_row;
-	int	next_col;
 	int	num;
+	int	nrow;
+	int	ncol;
 
 	if (row == 4)
 		return (check_constraints(grid, constraints));
-	if (col == 3)
-		next_row = row + 1;
-	else
-		next_row = row;
-	next_col = (col + 1) % 4;
+	nrow = row + (col == 3);
+	ncol = (col + 1) % 4;
 	num = 1;
 	while (num <= 4)
 	{
 		if (is_valid(grid, row, col, num))
 		{
-			grid[row][col] = num;
-			if (solve(grid, constraints, next_row, next_col))
+			grid[row * 4 + col] = num;
+			if (solve(grid, constraints, nrow, ncol))
 				return (1);
-			grid[row][col] = 0;
+			grid[row * 4 + col] = 0;
 		}
 		num++;
 	}

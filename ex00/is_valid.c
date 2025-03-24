@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuwahat <tkuwahat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ekojima <ekojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:21:14 by tkuwahat          #+#    #+#             */
-/*   Updated: 2025/03/23 15:03:43 by tkuwahat         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:01:06 by ekojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_valid(int grid[4][4], int row, int col, int num)
+int	is_valid(int *grid, int row, int col, int num)
 {
 	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		if (grid[row][i] == num || grid[i][col] == num)
+		if (grid[row * 4 + i] == num)
+			return (0);
+		if (grid[i * 4 + col] == num)
 			return (0);
 		i++;
 	}

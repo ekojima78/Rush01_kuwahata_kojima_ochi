@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuwahat <tkuwahat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ekojima <ekojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 14:57:20 by tkuwahat          #+#    #+#             */
-/*   Updated: 2025/03/23 15:05:57 by tkuwahat         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:00:52 by ekojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print_grid(int grid[4][4])
+void	print_grid(int *grid)
 {
 	int		i;
 	int		j;
@@ -24,7 +24,7 @@ void	print_grid(int grid[4][4])
 		j = 0;
 		while (j < 4)
 		{
-			c = grid[i][j] + '0';
+			c = grid[i * 4 + j] + '0';
 			write(1, &c, 1);
 			if (j < 3)
 				write(1, " ", 1);
