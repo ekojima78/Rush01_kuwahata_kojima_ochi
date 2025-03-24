@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekojima <ekojima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tkuwahat <tkuwahat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:23:25 by tkuwahat          #+#    #+#             */
-/*   Updated: 2025/03/23 16:06:56 by ekojima          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:04:39 by tkuwahat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	solve(int grid[4][4], int constraints[16], int row, int col)
 
 	if (row == 4)
 		return (check_constraints(grid, constraints));
-	next_row = (col == 3) ? row + 1 : row;
+	if (col == 3)
+		next_row = row + 1;
+	else
+		next_row = row;
 	next_col = (col + 1) % 4;
 	num = 1;
 	while (num <= 4)
